@@ -17,16 +17,24 @@ function Navbar() {
         <div className="links-container">
           <ul className="links">
             <li className="link">
-              <FaFacebookF />
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                <FaFacebookF />
+              </a>
             </li>
             <li className="link">
-              <FaInstagram />
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                <FaInstagram />
+              </a>
             </li>
             <li className="link">
-              <BsTwitterX />
+              <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+                <BsTwitterX />
+              </a>
             </li>
             <li className="link">
-              <FaYoutube />
+              <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+                <FaYoutube />
+              </a>
             </li>
           </ul>
         </div>
