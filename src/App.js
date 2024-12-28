@@ -4,10 +4,11 @@ import Navbar from "./components/Navbar";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { BrowserRouter as Router } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <Router>
+    <Router className="container">
       <Navbar />
       <AppRoutes />
       <ToastContainer
@@ -21,6 +22,7 @@ function App() {
         draggable
         pauseOnHover
       />
+      <Footer />
     </Router>
   );
 }

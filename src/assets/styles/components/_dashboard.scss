@@ -9,12 +9,12 @@
   border-radius: 16px;
   backdrop-filter: blur(10px);
   overflow: hidden;
+  height: 500px;
 
   @include respond-to("md") {
     flex-direction: column;
   }
 
-  // Sidebar Section
   .dashboard-sidebar {
     width: 25%;
     padding: 1rem;
