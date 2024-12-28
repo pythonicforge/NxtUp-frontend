@@ -1,0 +1,13 @@
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+
+  @each $size, $value in $breakpoints {
+    @include respond-to($size) {
+      max-width: $value;
+    }
+  }
+}
