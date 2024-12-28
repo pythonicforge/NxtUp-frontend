@@ -1,0 +1,81 @@
+.dashboard {
+  display: flex;
+  position: relative;
+  margin: -200px auto 0;
+  width: 90%;
+  max-width: 1200px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+
+  @include respond-to("md") {
+    flex-direction: column;
+  }
+
+  // Sidebar Section
+  .dashboard-sidebar {
+    width: 25%;
+    padding: 1rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+
+    @include respond-to("md") {
+      width: 100%;
+      border-right: none;
+      padding: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      @include respond-to("md") {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        padding: 0.8rem 1rem;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+
+        &.active {
+          color: $primary-color;
+          font-weight: bold;
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        @include respond-to("xs") {
+          font-size: 0.75rem;
+        }
+
+        .dashboard-item {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .dashboard-content {
+    width: 75%;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    color: #000;
+
+    @include respond-to("md") {
+      width: 100%;
+    }
+  }
+}
