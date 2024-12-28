@@ -8,7 +8,7 @@ import { FaYoutube } from "react-icons/fa";
 function Navbar() {
   return (
     <>
-      <nav className="container navbar">
+      <nav className="container navbar section-gap">
         <div className="logo-container">
           <Link to="/">
             <p className="logo-text">nxtup</p>
@@ -17,22 +17,42 @@ function Navbar() {
         <div className="links-container">
           <ul className="links">
             <li className="link">
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
                 <FaFacebookF />
               </a>
             </li>
             <li className="link">
-              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
                 <FaInstagram />
               </a>
             </li>
             <li className="link">
-              <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+              >
                 <BsTwitterX />
               </a>
             </li>
             <li className="link">
-              <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Youtube"
+              >
                 <FaYoutube />
               </a>
             </li>
