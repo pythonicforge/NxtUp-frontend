@@ -23,7 +23,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="dashboard">
+    <div className="dashboard section-gap">
       <div className="dashboard-sidebar">
         <ul>
           <li

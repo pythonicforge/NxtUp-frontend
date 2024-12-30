@@ -1,7 +1,7 @@
 .dashboard {
   display: flex;
   position: relative;
-  margin: -200px auto 0;
+  margin: -250px auto 2rem auto;
   width: 90%;
   max-width: 1200px;
   background: rgba(255, 255, 255, 0.05);
@@ -9,10 +9,10 @@
   border-radius: 16px;
   backdrop-filter: blur(10px);
   overflow: hidden;
-  height: 500px;
 
   @include respond-to("md") {
     flex-direction: column;
+    margin: -150px auto 0;
   }
 
   .dashboard-sidebar {
