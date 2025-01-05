@@ -1,0 +1,25 @@
+.event-details-container{
+    
+    .event-details-banner{
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        
+        img{
+            width: 100%;
+            border-radius: 10px;
+        }
+    }
+    
+    .sub-container{
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid rgba(255, 255, 255);
+        .event-info{
+            .event-details-info{
+                background-color: $tertiary-color;
+                flex: 1;
+            }
+        }
+    }
+}
+
