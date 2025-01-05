@@ -10,9 +10,13 @@
 
 @import "components/navbar";
 @import "components/hero";
-@import "components/eventpage";
 @import "components/dashboard";
 @import "components/event";
 @import "components/clan";
 @import "components/club";
 @import "components/footer";
+@import "components/detailcontainer";
+@import "components/loader";
+
+@import "pages/home";
+@import "pages/eventdetails";
