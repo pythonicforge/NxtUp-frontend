@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import formatDate from "../utils/formatDate";
 import Loader from "../components/Loader";
 import { IoLocationOutline } from "react-icons/io5";
@@ -93,14 +93,16 @@ const EventDetails = () => {
       case "description":
         return (
           <div className="tab-content">
-            <h2>Event Description</h2>
-            <p>{event.description}</p>
+            {event.description ? (
+              <p>{event.description}</p>
+            ) : (
+              <p>No description available.</p>
+            )}
           </div>
         );
       case "rulebook":
         return (
           <div className="tab-content">
-            <h2>Rule Book</h2>
             <ul>
               {event.rules?.map((rule, index) => (
                 <li key={index}>{rule}</li>
@@ -111,7 +113,6 @@ const EventDetails = () => {
       case "memories":
         return (
           <div className="tab-content">
-            <h2>Past Memories</h2>
             <div className="memories-gallery">
               {event.memories?.map((image, index) => (
                 <img key={index} src={image} alt={`Memory ${index}`} />
@@ -128,91 +129,105 @@ const EventDetails = () => {
     <>
       <div className="event-details-container container">
         <div className="event-details-banner">
-          <img src="https://i0.wp.com/linkedinheaders.com/wp-content/uploads/2018/02/galaxy-header.jpg" alt="" className="banner-image" />
+          <img
+            src="https://i0.wp.com/linkedinheaders.com/wp-content/uploads/2018/02/galaxy-header.jpg"
+            alt=""
+            className="banner-image"
+          />
         </div>
 
-      <div className="sub-container">
-        <div className="event-info">
-          <div className="event-details-info">
-            <h2 className="event-details__title">{event.heading}</h2>
-            <div className="date-container">
-              <SlCalender />
-              <p className="event-details__date">{formatDate(event.date)}</p>
+        <div className="sub-container">
+          <div className="event-info">
+            <div className="event-details-info">
+              <h2 className="event-details__title">{event.heading}</h2>
+              <div className="location-container">
+                <IoLocationOutline />
+                <p className="event-details__location">{event.location}</p>
+              </div>
+              <div className="date-container">
+                <SlCalender />
+                <p className="event-details__date">{formatDate(event.date)}</p>
+              </div>
+              <p className="event-tag">{event.tag} Event</p>
             </div>
-            <div className="location-container">
-              <IoLocationOutline />
-              <p className="event-details__location">{event.location}</p>
-            </div>
-            <p className="event-tag">{event.tag}</p>
-          </div>
 
-          <div className="event-details-description">
-            <div className="tabs">
-              <button
-                className={`tab-button ${
-                  activeTab === "description" ? "active" : ""
-                }`}
-                onClick={() => setActiveTab("description")}
-              >
-                Description
-              </button>
-              <button
-                className={`tab-button ${
-                  activeTab === "rulebook" ? "active" : ""
-                }`}
-                onClick={() => setActiveTab("rulebook")}
-              >
-                Rule Book
-              </button>
-              <button
-                className={`tab-button ${
-                  activeTab === "memories" ? "active" : ""
-                }`}
-                onClick={() => setActiveTab("memories")}
-              >
-                Past Memories
-              </button>
+            <div className="event-details-description">
+              <div className="tabs">
+                <button
+                  className={`tab-button ${
+                    activeTab === "description" ? "active" : ""
+                  }`}
+                  onClick={() => setActiveTab("description")}
+                >
+                  Description
+                </button>
+                <button
+                  className={`tab-button ${
+                    activeTab === "rulebook" ? "active" : ""
+                  }`}
+                  onClick={() => setActiveTab("rulebook")}
+                >
+                  Rule Book
+                </button>
+                <button
+                  className={`tab-button ${
+                    activeTab === "memories" ? "active" : ""
+                  }`}
+                  onClick={() => setActiveTab("memories")}
+                >
+                  Past Memories
+                </button>
+              </div>
+              <div className="tabs-content">{renderTabContent()}</div>
             </div>
-            {renderTabContent()}
+          </div>
+          <div className="register-container">
+            <div className="top">
+              <p className="register-type">Free</p>
+              <Link to={`/events/${eventId}/register`}>
+                <button className="register-button">Register</button>
+              </Link>
+            </div>
+            <div className="bottom">
+              <div className="info-container">
+                <div className="icon">
+                  <MdGroups />
+                </div>
+                <div className="info-text">
+                  <p className="top">Registered</p>
+                  <p className="bottom">105</p>
+                </div>
+              </div>
+              <div className="info-container">
+                <div className="icon">
+                  <BsFillPeopleFill />
+                </div>
+                <div className="info-text">
+                  <p className="top">Team Size</p>
+                  <p className="bottom">2 - 3 Members</p>
+                </div>
+              </div>
+              <div className="info-container">
+                <div className="icon">
+                  <FaTrophy />
+                </div>
+                <div className="info-text">
+                  <p className="top">Prizes worth</p>
+                  <p className="bottom">₹ 10,000</p>
+                </div>
+              </div>
+              <div className="info-container">
+                <div className="icon">
+                  <FaClock />
+                </div>
+                <div className="info-text">
+                  <p className="top">Registration Deadline</p>
+                  <p className="bottom">8 Days left</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="register-container">
-          <div className="top">
-            <p className="register-type">Free</p>
-            <button className="register-button">Register</button>
-          </div>
-          <div className="bottom">
-            <div className="info-container">
-              <MdGroups />
-              <div className="info-text">
-                <p className="top">Registered</p>
-                <p className="bottom">105</p>
-              </div>
-            </div>
-            <div className="info-container">
-              <BsFillPeopleFill />
-              <div className="info-text">
-                <p className="top">Team Size</p>
-                <p className="bottom">2 - 3 Members</p>
-              </div>
-            </div>
-            <div className="info-container">
-              <FaTrophy />
-              <div className="info-text">
-                <p className="top">Prizes worth</p>
-                <p className="bottom">₹ 10,000</p>
-              </div>
-            </div>
-            <div className="info-container">
-              <FaClock />
-              <div className="info-text">
-                <p className="top">Registration Deadline</p>
-                <p className="bottom">8 Days left</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       </div>
     </>
   );
