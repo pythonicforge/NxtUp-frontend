@@ -20,7 +20,7 @@ function Events({ filter, events }) {
               time={event.time}
               location={event.location}
               details={event.details}
-              title={event.title}
+              title={event.heading}
             />
           ))
         ) : (

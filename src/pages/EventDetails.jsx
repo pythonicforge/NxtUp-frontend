@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import formatDate from "../utils/formatDate";
 import Loader from "../components/Loader";
+import NotFound from "./NotFound";
 import { IoLocationOutline } from "react-icons/io5";
 import { SlCalender } from "react-icons/sl";
 import { MdGroups } from "react-icons/md";
@@ -75,17 +76,32 @@ const sampleEvents = [
 const EventDetails = () => {
   const { eventId } = useParams();
   const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("description");
 
   useEffect(() => {
-    const eventDetails = sampleEvents.find(
-      (event) => event.id === parseInt(eventId)
-    );
-    setEvent(eventDetails);
+    setLoading(true);
+    const timer = setTimeout(() => {
+      const eventDetails = sampleEvents.find(
+        (event) => event.id === parseInt(eventId)
+      );
+      if (eventDetails) {
+        setEvent(eventDetails);
+      } else {
+        setEvent(null);
+      }
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
   }, [eventId]);
 
-  if (!event) {
+  if (loading) {
     return <Loader />;
+  }
+
+  if (!event) {
+    return <NotFound />;
   }
 
   const renderTabContent = () => {

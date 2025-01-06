@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import formConfig from "../data/formConfig";
 import Loader from "../components/Loader";
 import { showError, showSuccess } from "../utils/toastUtil";
+import NotFound from "./NotFound"; // Import NotFound if you want to show a page for invalid routes
 
 const Registration = () => {
   const { eventId } = useParams();
+  const navigate = useNavigate(); // To handle redirection
   const [formFields, setFormFields] = useState([]);
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(true);
@@ -17,13 +19,14 @@ const Registration = () => {
         console.log(eventConfig);
         setFormFields(eventConfig.formFields);
       } else {
-        showError(`No form configuration found for the particular event`);
+        showError(`No form configuration found for this event.`);
+        navigate("/events"); // Redirect to events list if event configuration is not found
       }
       setLoading(false);
     };
 
     fetchFormConfig();
-  }, [eventId]);
+  }, [eventId, navigate]); // Adding navigate as a dependency
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

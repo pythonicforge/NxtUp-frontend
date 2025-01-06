@@ -5,8 +5,10 @@ import Dashboard from "../components/Dashboard";
 function Home() {
   return (
     <>
+    <div className="home-wrapper">
       <Hero />
       <Dashboard />
+    </div>
     </>
   );
 }
