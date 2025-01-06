@@ -10,6 +10,7 @@ body {
   font-family: $font-primary;
   color: $text-color;
   background-color: $background-color;
+  user-select: none;
 }
 
 
